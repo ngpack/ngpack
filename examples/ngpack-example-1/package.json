@@ -1,9 +1,9 @@
 {
-  "name": "@ngpack/ngpack",
+  "name": "ngpack-example-1",
   "version": "0.0.1",
-  "description": "ngpack: the modular build system for Angular",
+  "description": "example usage of ngpack - the modular build system for Angular",
   "author": "Merott Movahedi <merott@merott.com> (http://merott.com/)",
-  "main": "ngpack.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ngpack/ngpack.git"
@@ -12,20 +12,21 @@
     "url": "https://github.com/ngpack/ngpack/issues"
   },
   "homepage": "https://github.com/ngpack/ngpack#readme",
+  "private": true,
   "keywords": [
     "ngpack",
     "angular",
-    "webpack"
+    "webpack",
+    "example"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "./node_modules/.bin/tsc",
-    "build:watch": "npm run build -- -w"
+    "build": "webpack"
   },
   "devDependencies": {
-    "typescript": "2.0.0"
-  },
-  "dependencies": {
-    "webpack-merge": "0.14.1"
+    "@ngpack/base": "latest",
+    "@ngpack/ngpack": "latest",
+    "typings": "1.3.2",
+    "webpack": "1.13.1"
   }
 }

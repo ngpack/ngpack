@@ -1,9 +1,9 @@
 {
-  "name": "@ngpack/ngpack",
+  "name": "@ngpack/base",
   "version": "0.0.1",
-  "description": "ngpack: the modular build system for Angular",
+  "description": "The base extension of an ngpack build - a modular angular build system",
   "author": "Merott Movahedi <merott@merott.com> (http://merott.com/)",
-  "main": "ngpack.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ngpack/ngpack.git"
@@ -14,18 +14,9 @@
   "homepage": "https://github.com/ngpack/ngpack#readme",
   "keywords": [
     "ngpack",
+    "ngpack-ext",
     "angular",
     "webpack"
   ],
-  "license": "MIT",
-  "scripts": {
-    "build": "./node_modules/.bin/tsc",
-    "build:watch": "npm run build -- -w"
-  },
-  "devDependencies": {
-    "typescript": "2.0.0"
-  },
-  "dependencies": {
-    "webpack-merge": "0.14.1"
-  }
+  "license": "MIT"
 }
