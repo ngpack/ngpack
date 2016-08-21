@@ -20,10 +20,14 @@
   "license": "MIT",
   "scripts": {
     "build": "./node_modules/.bin/tsc",
-    "build:watch": "npm run build -- -w"
+    "build:watch": "npm run build -- -w",
+    "lint": "./node_modules/.bin/tslint ngpack.ts lib/**/*.ts extensions/**/*.ts  -e '**/node_modules/**'"
   },
   "devDependencies": {
-    "typescript": "2.0.0"
+    "codelyzer": "0.0.28",
+    "tslint": "3.14.0",
+    "typescript": "2.0.0",
+    "vrsource-tslint-rules": "0.12.0"
   },
   "dependencies": {
     "webpack-merge": "0.14.1"
