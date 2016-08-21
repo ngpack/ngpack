@@ -1,9 +1,9 @@
-import { ConfigGenerator } from './lib/config-generator';
+import { NgPackExtension, ConfigGenerator } from './lib/config-generator';
 
 class NgPack {
-  private extensions: string[] = [];
+  private extensions: NgPackExtension[] = [];
 
-  public add(extension: string) {
+  public add(extension: NgPackExtension) {
     this.extensions.push(extension);
     return this;
   }
