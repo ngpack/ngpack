@@ -1,0 +1,23 @@
+{
+  "name": "@ngpack/typescript",
+  "version": "0.0.1",
+  "description": "extends ngpack with TypeScript support",
+  "author": "Merott Movahedi <merott@merott.com> (http://merott.com/)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngpack/ngpack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ngpack/ngpack/issues"
+  },
+  "homepage": "https://github.com/ngpack/ngpack#readme",
+  "keywords": [
+    "ngpack",
+    "ngpack-ext",
+    "angular",
+    "webpack",
+    "typescript"
+  ],
+  "license": "MIT"
+}

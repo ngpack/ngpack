@@ -33,30 +33,6 @@ module.exports = function makeWebpackConfig() {
   var config = {};
 
   /**
-   * Devtool
-   * Reference: http://webpack.github.io/docs/configuration.html#devtool
-   * Type of sourcemap to use per build type
-   */
-  if (isProd) {
-    config.devtool = 'source-map';
-  } else {
-    config.devtool = 'eval-source-map';
-  }
-
-  // add debug messages
-  config.debug = !isProd || !isTest;
-
-  /**
-   * Entry
-   * Reference: http://webpack.github.io/docs/configuration.html#entry
-   */
-  config.entry = isTest ? {} : {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'main': './src/main.ts' // our angular app
-  };
-
-  /**
    * Output
    * Reference: http://webpack.github.io/docs/configuration.html#output
    */

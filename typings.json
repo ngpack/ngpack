@@ -1,7 +1,8 @@
 {
   "name": "ngpack",
   "dependencies": {
-    "webpack": "registry:npm/webpack#1.12.9+20160418172948"
+    "webpack": "registry:npm/webpack#1.12.9+20160418172948",
+    "yargs": "registry:npm/yargs#5.0.0+20160817153026"
   },
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160725163759",

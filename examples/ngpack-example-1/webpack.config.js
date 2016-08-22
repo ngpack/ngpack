@@ -1,6 +1,7 @@
 module.exports = require('@ngpack/ngpack').ngpack
-  .add('@ngpack/base')
   .add(require('./webpack.config.ext'))
+  .add('@ngpack/base')
+  .add('@ngpack/typescript')
   .make();
 
 console.log(`=============== Generated Config ===============`);

@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "module": "commonjs",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "paths": {
+      "@ngpack/ngpack": ["./ngpack"]
+    },
     "pretty": true,
     "removeComments": true,
     "sourceMap": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es5"
   },
   "exclude": [
     "examples",

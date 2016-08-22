@@ -1,0 +1,11 @@
+/.vscode
+/examples
+/extensions
+/typings
+
+/.nvmrc
+/tsconfig.json
+/tslint.json
+/typings.json
+
+*.ts
