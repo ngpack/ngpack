@@ -11,6 +11,13 @@ args.env = args.env || {};
 
 export interface INgPackEnv {
   mode: NgPackMode;
+  root: string;
+  port: number;
+}
+
+export interface INgPackEnvConfig {
+  port?: number;
+  root?: string;
 }
 
 export enum NgPackMode {
@@ -20,13 +27,21 @@ export enum NgPackMode {
 }
 
 export class EnvParser {
-  public static parse(): INgPackEnv {
+  private config: INgPackEnvConfig = {};
+
+  public configure(config: INgPackEnvConfig) {
+    this.config = Object.assign({}, this.config, config);
+  }
+
+  public parse(): INgPackEnv {
     return {
       mode: this.getMode(),
+      port: this.config.port || 8080,
+      root: this.config.root || process.cwd(),
     };
   }
 
-  private static getMode() {
+  private getMode() {
     switch ((args.env.mode || '').toLowerCase()) {
       case 'dev': case 'development':
         return NgPackMode.DEV;

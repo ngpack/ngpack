@@ -3,14 +3,16 @@ import { Configuration } from 'webpack';
 import * as merge from 'webpack-merge';
 import { NgPack } from '@ngpack/ngpack';
 
-import { requireExt } from './utils';
-
 export type NgPackExtension = string | Function | Configuration;
+
+function requireExt(extName: string) {
+  return require.main.require(extName);
+}
 
 export class ConfigGenerator {
   constructor(private extensions: NgPackExtension[]) { }
 
-  public generate(ngpack: NgPack) {
+  public generate(ngpack: NgPack): Configuration {
     return this.extensions.reduce((config, extension) => {
       let extConfig: Configuration;
 
