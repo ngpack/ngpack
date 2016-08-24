@@ -1,8 +1,11 @@
 module.exports = require('@ngpack/ngpack').ngpack
-  .add(require('./webpack.config.ext'))
-  .configure({ port: 9090, root: __dirname })
+  .configure({
+    // port: 9090,
+    root: __dirname,
+  })
   .add('@ngpack/base')
   .add('@ngpack/typescript')
+  .add(require('./webpack.config.ext'))
   .make();
 
 console.log(`=============== Generated Config ===============`);

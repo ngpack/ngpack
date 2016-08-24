@@ -15,7 +15,10 @@ export function provide(ngpack: NgPack): Configuration {
       filename: ngpack.util.isProd() ? 'js/[name].[hash].js' : 'js/[name].js',
       path: ngpack.util.root('dist'),
       publicPath: ngpack.util.isProd() ?
-        '/' : 'http://localhost:' + ngpack.env.port,
+        '/' : `http://localhost:${ngpack.env.port}/`,
+    },
+    resolve: {
+      extensions: [''],
     },
   };
 }
