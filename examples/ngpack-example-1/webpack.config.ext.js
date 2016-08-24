@@ -40,7 +40,7 @@ module.exports = function makeWebpackConfig() {
     cache: !isTest,
     root: root(),
     // only discover files that have those extensions
-    extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
+    extensions: ['', '.js', '.json', '.css', '.scss', '.html'],
     alias: {
       'app': 'src/app',
       'common': 'src/common'
