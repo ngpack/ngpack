@@ -56,13 +56,6 @@ module.exports = function makeWebpackConfig() {
   config.module = {
     preLoaders: isTest ? [] : [{ test: /\.ts$/, loader: 'tslint' }],
     loaders: [
-      // Support for .ts files.
-      {
-        test: /\.ts$/,
-        loaders: ['ts', 'angular2-template-loader'],
-        exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
-      },
-
       // copy those assets to output
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
