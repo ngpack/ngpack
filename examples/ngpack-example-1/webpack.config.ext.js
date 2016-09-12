@@ -56,15 +56,6 @@ module.exports = function makeWebpackConfig() {
   config.module = {
     preLoaders: isTest ? [] : [{ test: /\.ts$/, loader: 'tslint' }],
     loaders: [
-      // copy those assets to output
-      {
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file?name=fonts/[name].[hash].[ext]?'
-      },
-
-      // Support for *.json files.
-      { test: /\.json$/, loader: 'json' },
-
       // Support for CSS as raw text
       // use 'null' loader in test mode (https://github.com/webpack/null-loader)
       // all css in src/style will be bundled in an external css file
