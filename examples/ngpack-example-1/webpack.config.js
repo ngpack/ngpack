@@ -1,4 +1,4 @@
-module.exports = require('@ngpack/ngpack').ngpack
+var config = module.exports = require('@ngpack/ngpack').ngpack
   .configure({
     // port: 9090,
     root: __dirname,
@@ -8,6 +8,14 @@ module.exports = require('@ngpack/ngpack').ngpack
   .add(angular2TemplateLoaderExt)
   .add(require('./webpack.config.ext'))
   .make();
+
+Object.assign(config, {
+  postcss: [
+    require('autoprefixer')({
+      browsers: ['last 4 version'],
+    }),
+  ]
+});
 
 console.log(`=============== Generated Config ===============`);
 console.log(require('util').inspect(module.exports))
