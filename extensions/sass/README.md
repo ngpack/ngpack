@@ -1,0 +1,1 @@
+extends ngpack with Sass support

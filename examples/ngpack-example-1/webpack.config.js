@@ -4,6 +4,7 @@ var config = module.exports = require('@ngpack/ngpack').ngpack
     root: __dirname,
   })
   .add('@ngpack/base')
+  .add('@ngpack/sass')
   .add('@ngpack/typescript')
   .add(angular2TemplateLoaderExt)
   .add(require('./webpack.config.ext'))
