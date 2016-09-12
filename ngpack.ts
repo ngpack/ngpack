@@ -1,10 +1,14 @@
-import { NgPackExtension, ConfigGenerator } from './lib/config-generator';
+import {
+  NgPackExtension,
+  INgPackModifier,
+  ConfigGenerator,
+} from './lib/config-generator';
 import { EnvParser, INgPackEnvConfig } from './lib/env-parser';
 import { Util } from './lib/util';
 
 export class NgPack {
-  private extensions: NgPackExtension[] = [];
   private envParser = new EnvParser();
+  private generator = new ConfigGenerator(this);
 
   public get env() {
     return this.envParser.parse();
@@ -15,7 +19,12 @@ export class NgPack {
   }
 
   public add(extension: NgPackExtension) {
-    this.extensions.push(extension);
+    this.generator.add(extension);
+    return this;
+  }
+
+  public modify(modifier: INgPackModifier) {
+    this.generator.modify(modifier);
     return this;
   }
 
@@ -25,8 +34,7 @@ export class NgPack {
   }
 
   public make() {
-    const configGenerator = new ConfigGenerator(this.extensions);
-    return configGenerator.generate(this);
+    return this.generator.generate();
   }
 }
 
