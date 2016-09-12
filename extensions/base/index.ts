@@ -41,6 +41,14 @@ export function provide(ngpack: NgPack): Configuration {
           include: ngpack.util.root('src', 'app'), loader: 'raw!postcss',
           test: /\.css$/,
         },
+
+        // support for .html as raw text
+        // todo: change the loader to something that adds a hash to images
+        {
+          exclude: ngpack.util.root('src', 'public'),
+          loader: 'raw',
+          test: /\.html?$/,
+        },
       ],
     },
     output: ngpack.util.isTest() ? {} : {

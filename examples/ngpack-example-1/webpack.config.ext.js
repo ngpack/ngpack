@@ -55,11 +55,6 @@ module.exports = function makeWebpackConfig() {
    */
   config.module = {
     preLoaders: isTest ? [] : [{ test: /\.ts$/, loader: 'tslint' }],
-    loaders: [
-      // support for .html as raw text
-      // todo: change the loader to something that adds a hash to images
-      { test: /\.html$/, loader: 'raw', exclude: root('src', 'public') }
-    ],
     postLoaders: []
   };
 
