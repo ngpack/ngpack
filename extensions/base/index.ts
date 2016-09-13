@@ -1,4 +1,4 @@
-import { Configuration } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 import { NgPack } from '@ngpack/ngpack';
 
 const extractTextPlugin = require('extract-text-webpack-plugin');
@@ -59,6 +59,13 @@ export function provide(ngpack: NgPack): Configuration {
       publicPath: ngpack.util.isProd() ?
         '/' : `http://localhost:${ngpack.env.port}/`,
     },
+    plugins: [
+      // Define env variables to help with builds
+      // https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+      new DefinePlugin({
+        'process.env': JSON.stringify(ngpack.env),
+      }),
+    ],
     resolve: {
       extensions: [''],
     },

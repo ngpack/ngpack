@@ -25,7 +25,7 @@
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean-install && npm start",
     "watch": "node --preserve-symlinks ./node_modules/.bin/webpack --watch --progress --profile",
-    "build": "rimraf dist && node --preserve-symlinks ./node_modules/.bin/webpack --progress --profile --bail",
+    "build": "rimraf dist && node --preserve-symlinks ./node_modules/.bin/webpack --progress --profile --bail --env.mode=production",
     "server": "node --preserve-symlinks ./node_modules/.bin/webpack-dev-server --inline --progress --port 8080",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",

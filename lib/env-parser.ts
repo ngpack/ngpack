@@ -20,10 +20,10 @@ export interface INgPackEnvConfig {
   root?: string;
 }
 
-export enum NgPackMode {
-  DEV = 1,
-  PROD = 2,
-  TEST = 3,
+export class NgPackMode {
+  public static DEV = 'development';
+  public static PROD = 'production';
+  public static TEST = 'testing';
 }
 
 export class EnvParser {
@@ -42,15 +42,14 @@ export class EnvParser {
   }
 
   private getMode() {
-    switch ((args.env.mode || '').toLowerCase()) {
-      case 'dev': case 'development':
-        return NgPackMode.DEV;
-      case 'prod': case 'production':
-        return NgPackMode.PROD;
-      case 'test': case 'testing':
-        return NgPackMode.TEST;
-      default:
-        return NgPackMode.DEV;
+    const accepted = [NgPackMode.DEV, NgPackMode.PROD, NgPackMode.TEST];
+    const mode = args.env.mode || NgPackMode.DEV;
+
+    if (accepted.indexOf(mode) === -1) {
+      throw new Error(
+        `Unrecognised mode: ${mode}. Accepted values: ${accepted.join(', ')}`);
     }
+
+    return mode;
   }
 }
