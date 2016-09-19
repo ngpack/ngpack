@@ -6,6 +6,7 @@ var config = module.exports = require('@ngpack/ngpack').ngpack
   .add('@ngpack/base')
   .add('@ngpack/sass')
   .add('@ngpack/typescript')
+  .add('@ngpack/istanbul')
   .add(angular2TemplateLoaderExt)
   .add(require('./webpack.config.ext'))
   .modify(configurePostCSS)

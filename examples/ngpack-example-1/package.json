@@ -33,8 +33,8 @@
     "e2e": "protractor",
     "e2e-live": "protractor --elementExplorer",
     "pretest": "npm run lint",
-    "test": "karma start",
-    "test-watch": "karma start --no-single-run --auto-watch",
+    "test": "node --preserve-symlinks ./node_modules/.bin/karma start --env.mode=testing",
+    "test-watch": "npm run test -- --no-single-run --auto-watch",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
     "start": "npm run server",
@@ -56,6 +56,7 @@
   },
   "devDependencies": {
     "@ngpack/base": "latest",
+    "@ngpack/istanbul": "latest",
     "@ngpack/ngpack": "latest",
     "@ngpack/sass": "latest",
     "@ngpack/typescript": "latest",

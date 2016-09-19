@@ -1,0 +1,1 @@
+extends ngpack-based configuration to support Istanbul

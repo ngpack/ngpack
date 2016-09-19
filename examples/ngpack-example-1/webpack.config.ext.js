@@ -54,28 +54,8 @@ module.exports = function makeWebpackConfig() {
    * This handles most of the magic responsible for converting modules
    */
   config.module = {
-    preLoaders: isTest ? [] : [{ test: /\.ts$/, loader: 'tslint' }],
-    postLoaders: []
+    preLoaders: isTest ? [] : [{ test: /\.ts$/, loader: 'tslint' }]
   };
-
-  if (isTest) {
-    // instrument only testing sources with Istanbul, covers ts files
-    config.module.postLoaders.push({
-      test: /\.ts$/,
-      include: path.resolve('src'),
-      loader: 'istanbul-instrumenter-loader',
-      exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
-    });
-
-    // needed for remap-instanbul
-    config.ts = {
-      compilerOptions: {
-        sourceMap: false,
-        sourceRoot: './src',
-        inlineSourceMap: true
-      }
-    };
-  }
 
   /**
    * Plugins
