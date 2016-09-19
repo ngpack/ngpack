@@ -30,6 +30,7 @@
     "vrsource-tslint-rules": "0.12.0"
   },
   "dependencies": {
+    "lodash.clone": "4.5.0",
     "webpack-merge": "0.14.1",
     "yargs": "5.0.0"
   }

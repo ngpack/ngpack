@@ -1,13 +1,14 @@
 import * as util from 'util';
 import { Configuration } from 'webpack';
 import * as merge from 'webpack-merge';
+import { clone } from 'lodash';
 import { NgPack } from '@ngpack/ngpack';
 
 export interface INgPackModifier {
   (config: Configuration, ngpack: NgPack): void;
 }
 export interface INgPackExtensionFunction {
-  (ngpack: NgPack): Configuration;
+  (ngpack?: NgPack, configSnapshot?: Configuration): Configuration;
 }
 
 export type NgPackExtension = string | INgPackExtensionFunction | Configuration;
@@ -17,14 +18,19 @@ interface INgPackItem {
   value: INgPackModifier | NgPackExtension;
 }
 
-function requireExt(extName: string) {
+function requireExt(extName: string): { provide: INgPackExtensionFunction } {
   return require.main.require(extName);
 }
 
 export class ConfigGenerator {
   private items: INgPackItem[] = [];
+  private snapshot: Configuration;
 
   public constructor(private ngpack: NgPack) { }
+
+  public get current() {
+    return this.snapshot;
+  }
 
   public add(extension: NgPackExtension) {
     const type = (() => {
@@ -54,11 +60,13 @@ export class ConfigGenerator {
 
   public generate(): Configuration {
     return this.items.reduce((config, item) => {
+      this.snapshot = clone(config);
+
       const extConfig = (() => {
         switch (item.type) {
           case 'extName':
-            const ext = requireExt(item.value as string).provide(this.ngpack);
-            return typeof ext === 'function' ? ext(this.ngpack) : ext;
+            return requireExt(item.value as string)
+              .provide(this.ngpack);
           case 'extFunction':
             const extFunction = item.value as INgPackExtensionFunction;
             return extFunction(this.ngpack);

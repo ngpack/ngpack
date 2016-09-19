@@ -10,6 +10,10 @@ export class NgPack {
   private envParser = new EnvParser();
   private generator = new ConfigGenerator(this);
 
+  public get snapshot() {
+    return this.generator.current;
+  }
+
   public get env() {
     return this.envParser.parse();
   }
