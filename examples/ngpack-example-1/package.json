@@ -60,6 +60,7 @@
     "@ngpack/ngpack": "latest",
     "@ngpack/sass": "latest",
     "@ngpack/typescript": "latest",
+    "@ngpack/tslint": "latest",
     "angular2-template-loader": "^0.4.0",
     "autoprefixer": "^6.3.2",
     "codelyzer": "0.0.26",

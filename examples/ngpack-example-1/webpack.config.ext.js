@@ -41,25 +41,6 @@ module.exports = function makeWebpackConfig() {
   };
 
   /**
-   * Loaders
-   * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
-   * List: http://webpack.github.io/docs/list-of-loaders.html
-   * This handles most of the magic responsible for converting modules
-   */
-  config.module = {
-    preLoaders: isTest ? [] : [{ test: /\.ts$/, loader: 'tslint' }]
-  };
-
-  /**
-   * Apply the tslint loader as pre/postLoader
-   * Reference: https://github.com/wbuchwalter/tslint-loader
-   */
-  config.tslint = {
-    emitErrors: false,
-    failOnHint: false
-  };
-
-  /**
    * Dev server configuration
    * Reference: http://webpack.github.io/docs/configuration.html#devserver
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html
