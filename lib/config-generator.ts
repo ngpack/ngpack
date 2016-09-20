@@ -26,6 +26,23 @@ export class ConfigGenerator {
   private items: INgPackItem[] = [];
   private snapshot: Configuration;
 
+  private static dropEmpties(config: any) {
+    for (const k in config) {
+      if (config.hasOwnProperty(k)) {
+        const prop = config[k];
+
+        if (prop && (
+          (prop.constructor === Array && !prop.length) ||
+          (prop.constructor === Object && !Object.keys(prop).length)
+        )) {
+          delete config[k];
+        } else if (prop && prop.constructor === Object) {
+          this.dropEmpties(prop);
+        }
+      }
+    }
+  }
+
   public constructor(private ngpack: NgPack) { }
 
   public get current() {
@@ -80,6 +97,7 @@ export class ConfigGenerator {
         }
       })();
 
+      ConfigGenerator.dropEmpties(extConfig); // make sure no empty configs!
       return merge.smart(config, extConfig);
     }, {} as Configuration);
   }
