@@ -1,11 +1,13 @@
-import { Configuration, DefinePlugin } from 'webpack';
+import * as webpack from 'webpack';
 import { NgPack } from '@ngpack/ngpack';
 
 const extractTextPlugin = require('extract-text-webpack-plugin');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
-export function provide(ngpack: NgPack): Configuration {
+export function provide(ngpack: NgPack): webpack.Configuration {
   // create the base webpack configuration
-  const config: Configuration = {
+  const config: webpack.Configuration = {
     debug: ngpack.util.isDev(),
     entry: ngpack.util.isTest() ? {} : {
       'main': './src/main',
@@ -62,7 +64,7 @@ export function provide(ngpack: NgPack): Configuration {
     plugins: [
       // Define env variables to help with builds
       // https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-      new DefinePlugin({
+      new webpack.DefinePlugin({
         'process.env': JSON.stringify(ngpack.env),
       }),
     ],
@@ -70,6 +72,49 @@ export function provide(ngpack: NgPack): Configuration {
       extensions: [''],
     },
   };
+
+  if (!ngpack.util.isTest()) {
+    config.plugins.push(
+      // Generate common chunks if necessary
+      // Reference: https://webpack.github.io/docs/code-splitting.html
+      new webpack.optimize.CommonsChunkPlugin({
+        name: ['vendor', 'polyfills'],
+      }),
+
+      // Inject script and link tags into html files
+      // Reference: https://github.com/ampedandwired/html-webpack-plugin
+      new htmlWebpackPlugin({
+        chunksSortMode: 'dependency',
+        template: './src/public/index.html',
+      }),
+
+      // Extract css files
+      // Reference: https://github.com/webpack/extract-text-webpack-plugin
+      // Disabled when in test mode or not in build mode
+      new extractTextPlugin('css/[name].[hash].css', {
+        disable: !ngpack.util.isProd(),
+      })
+    );
+  }
+
+  // Add build specific plugins
+  if (ngpack.util.isProd()) {
+    config.plugins.push(
+      // Only emit files when there are no errors
+      new webpack.NoErrorsPlugin(),
+
+      // Dedupe modules in the output
+      new webpack.optimize.DedupePlugin(),
+
+      // Minify all javascript, switch loaders to minimizing mode
+      new webpack.optimize.UglifyJsPlugin({ mangle: { keep_fnames: true } }),
+
+      // Copy assets from the public folder
+      new copyWebpackPlugin([{
+        from: ngpack.util.root('./src/public'),
+      }])
+    );
+  }
 
   // add loader/plugin specific configurations
   Object.assign(config, {
