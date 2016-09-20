@@ -2,11 +2,13 @@ import { Configuration } from 'webpack';
 import { NgPack } from '@ngpack/ngpack';
 
 export function provide(ngpack: NgPack): Configuration {
-  const config: Configuration = { module: {} };
+  const config: Configuration = { };
 
   if (!ngpack.util.isTest()) {
     return config;
   }
+
+  config.module = {};
 
   config.module.postLoaders = [{
     exclude: [/\.spec\.js$/, /\.e2e\.js$/, /node_modules/],
