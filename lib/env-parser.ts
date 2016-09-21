@@ -1,9 +1,3 @@
-/*
-  npm run build --env.mode=dev  / development
-  npm run build --env.mode=prod / production
-  npm run build --env.mode=test / testing
-*/
-
 import { argv } from 'yargs';
 
 const args = argv as any;

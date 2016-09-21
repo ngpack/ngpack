@@ -29,7 +29,7 @@ function angular2TemplateLoaderExt(ngpack) {
     module:
     {
       loaders: [{
-        loaders: ['angular2-template-loader'],
+        loaders: ['angular2-template-loader', '@angularclass/hmr-loader'],
         test: /\.ts$/,
       }],
     },

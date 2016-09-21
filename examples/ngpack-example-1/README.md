@@ -81,6 +81,12 @@ After you have installed all dependencies you can now start developing with:
 
 It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The application can be checked at `http://localhost:8080`.
 
+As an alternative, you can work using Hot Module Replacement (HMR):
+
+* `npm run start:hmr`
+
+And you are all set! You can now modify your components on the fly without having to reload the entire page.
+
 ## Testing
 
 #### 1. Unit Tests
@@ -123,7 +129,7 @@ No, Webpack will add all the needed Javascript bundles as script tags and all th
 
 It's simple, just install the lib via npm and import it in your code when you need it. Don't forget that you need to configure some external libs in the [bootstrap](https://github.com/preboot/angular2-webpack/blob/master/src/main.ts) of your application.
 
-### How to include external css files such as bootstrap.css ?
+#### How to include external css files such as bootstrap.css ?
 
 Just install the lib and import the css files in [vendor.ts](https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts). For example this is how to do it with bootstrap:
 

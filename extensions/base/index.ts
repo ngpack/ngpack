@@ -4,6 +4,7 @@ import { NgPack } from '@ngpack/ngpack';
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
+const dashboardPlugin = require('webpack-dashboard/plugin');
 
 export function provide(ngpack: NgPack): webpack.Configuration {
   // create the base webpack configuration
@@ -12,6 +13,7 @@ export function provide(ngpack: NgPack): webpack.Configuration {
     devServer: {
       contentBase: './src/public',
       historyApiFallback: true,
+      quiet: true,
       stats: 'minimal',
     },
     entry: ngpack.util.isTest() ? {} : {
@@ -82,6 +84,10 @@ export function provide(ngpack: NgPack): webpack.Configuration {
       root: ngpack.util.root(),
     },
   };
+
+  if (ngpack.util.isDev()) {
+    config.plugins.push(new dashboardPlugin());
+  }
 
   if (!ngpack.util.isTest()) {
     config.plugins.push(
