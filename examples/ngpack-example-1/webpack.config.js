@@ -9,7 +9,6 @@ var config = module.exports = require('@ngpack/ngpack').ngpack
   .add('@ngpack/tslint')
   .add('@ngpack/istanbul')
   .add(angular2TemplateLoaderExt)
-  .add(require('./webpack.config.ext'))
   .modify(configurePostCSS)
   .make();
 

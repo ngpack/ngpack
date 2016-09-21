@@ -9,6 +9,11 @@ export function provide(ngpack: NgPack): webpack.Configuration {
   // create the base webpack configuration
   const config: webpack.Configuration = {
     debug: ngpack.util.isDev(),
+    devServer: {
+      contentBase: './src/public',
+      historyApiFallback: true,
+      stats: 'minimal',
+    },
     entry: ngpack.util.isTest() ? {} : {
       'main': './src/main',
       'polyfills': './src/polyfills',
