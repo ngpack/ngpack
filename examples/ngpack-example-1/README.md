@@ -1,3 +1,8 @@
+# Credit
+
+This example was copied from [preboot/angular2-webpack](https://github.com/preboot/angular2-webpack),
+and modified to demonstrate use of `@ngpack` for its webpack configuration
+
 # angular2-webpack
 
 [![Dependency Status](https://david-dm.org/preboot/angular2-webpack/status.svg)](https://david-dm.org/preboot/angular2-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular2-webpack/dev-status.svg)](https://david-dm.org/preboot/angular2-webpack#info=devDependencies)
