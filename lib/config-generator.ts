@@ -27,6 +27,8 @@ export class ConfigGenerator {
   private snapshot: Configuration;
 
   private static dropEmpties(config: any) {
+    let rerun = false;
+
     for (const k in config) {
       if (config.hasOwnProperty(k)) {
         const prop = config[k];
@@ -36,11 +38,22 @@ export class ConfigGenerator {
           (prop.constructor === Object && !Object.keys(prop).length)
         )) {
           delete config[k];
+
+          // a property is dropped, needs a rerun to make sure still not empty
+          rerun = true;
         } else if (prop && prop.constructor === Object) {
-          this.dropEmpties(prop);
+          // a property is dropped further down, needs a rerun
+          rerun = rerun || this.dropEmpties(prop);
         }
       }
     }
+
+    if (rerun) {
+      // check its properties again because the config has been modified
+      this.dropEmpties(config);
+    }
+
+    return rerun;
   }
 
   public constructor(private ngpack: NgPack) { }
