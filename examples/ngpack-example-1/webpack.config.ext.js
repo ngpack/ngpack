@@ -26,21 +26,6 @@ module.exports = function makeWebpackConfig() {
   var config = {};
 
   /**
-   * Resolve
-   * Reference: http://webpack.github.io/docs/configuration.html#resolve
-   */
-  config.resolve = {
-    cache: !isTest,
-    root: root(),
-    // only discover files that have those extensions
-    extensions: ['', '.js', '.json'],
-    alias: {
-      'app': 'src/app',
-      'common': 'src/common'
-    }
-  };
-
-  /**
    * Dev server configuration
    * Reference: http://webpack.github.io/docs/configuration.html#devserver
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html

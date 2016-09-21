@@ -69,7 +69,12 @@ export function provide(ngpack: NgPack): webpack.Configuration {
       }),
     ],
     resolve: {
-      extensions: [''],
+      alias: {
+        'app': 'src/app',
+        'common': 'src/common',
+      },
+      extensions: ['', '.js', '.json'],
+      root: ngpack.util.root(),
     },
   };
 
