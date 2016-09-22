@@ -8,7 +8,7 @@ export interface INgPackModifier {
   (config: Configuration, ngpack: NgPack): void;
 }
 export interface INgPackExtensionFunction {
-  (ngpack?: NgPack, configSnapshot?: Configuration): Configuration;
+  (ngpack?: NgPack): Configuration;
 }
 
 export type NgPackExtension = string | INgPackExtensionFunction | Configuration;

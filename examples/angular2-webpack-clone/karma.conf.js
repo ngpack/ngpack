@@ -1,8 +1,6 @@
 var path = require('path');
 
 var webpackConfig = require('./webpack.config');
-
-var ENV = process.env.npm_lifecycle_event;
 var isTestWatch = require('@ngpack/ngpack').ngpack.util.isTestWatch();
 
 module.exports = function (config) {

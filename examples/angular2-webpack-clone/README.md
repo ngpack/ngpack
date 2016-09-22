@@ -1,7 +1,14 @@
 # Credit
 
 This example was copied from [preboot/angular2-webpack](https://github.com/preboot/angular2-webpack),
-and modified to demonstrate use of `@ngpack` for its webpack configuration
+and modified to demonstrate use of `@ngpack` for its webpack configuration.
+
+## The Difference
+
+The major difference with angular2-webpack is its `webpack.config.js` file,
+which instead of specifying the webpack config directly, pulls in configuration
+from ngpack extension packages. It also demonstrates how easy it is to apply
+changes to the configuration without having to create an extension package.
 
 # angular2-webpack
 
