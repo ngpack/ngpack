@@ -89,7 +89,7 @@ export class ConfigGenerator {
   }
 
   public generate(): Configuration {
-    return this.items.reduce((config, item) => {
+    const generated = this.items.reduce((config, item) => {
       this.snapshot = clone(config);
 
       const extConfig = (() => {
@@ -113,5 +113,11 @@ export class ConfigGenerator {
       ConfigGenerator.dropEmpties(extConfig); // make sure no empty configs!
       return merge.smart(config, extConfig);
     }, {} as Configuration);
+
+    console.log(`=============== Generated Config ===============`);
+    console.log(require('util').inspect(generated))
+    console.log(`================================================\n\n`);
+
+    return generated;
   }
 }

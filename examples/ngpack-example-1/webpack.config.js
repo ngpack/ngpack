@@ -12,10 +12,6 @@ var config = module.exports = require('@ngpack/ngpack').ngpack
   .modify(configurePostCSS)
   .make();
 
-console.log(`=============== Generated Config ===============`);
-console.log(require('util').inspect(module.exports))
-console.log(`================================================\n\n`);
-
 function configurePostCSS(config) {
   config.postcss = [
     require('autoprefixer')({
