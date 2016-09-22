@@ -1,7 +1,7 @@
 {
   "name": "angular2-webpack-clone",
   "version": "0.0.1-alpha.0",
-  "description": "example usage of ngpack - the modular build system for Angular",
+  "description": "example usage of ngpack - the modular webpack config generator for Angular",
   "author": "Merott Movahedi <merott@merott.com> (http://merott.com/)",
   "main": "index.js",
   "repository": {

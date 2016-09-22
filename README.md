@@ -1,6 +1,6 @@
 # NgPack
 
-Opinionated webpack configuration generator for Angular 2 web applications
+Opinionated and modular webpack configuration generator for Angular 2 web applications
 
 ## Installation
 
