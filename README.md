@@ -68,7 +68,8 @@ by [smart-merging](https://github.com/survivejs/webpack-merge) various configs.
 The method accepts one parameter, which can be any of the following:
 
 - a string: name of an ngpack extension module installed via NPM
-- a function: a function with the same signature as an [ngpack extension](#Extensions)
+- a function: a function with the same signature as the `provide` method
+in an [ngpack extension](#Extensions)
 - an object: just a config object
 
 ### `ngpack.modify()`
@@ -99,8 +100,8 @@ root of the project
 
 ## Extensions
 
-An ngpack extension is a simple NPM module that exports a function with the
-following signature:
+An ngpack extension is a simple NPM module that exports an object with a
+method called `provide`, which follows the following signature:
 
 ```ts
 (ngpack?: NgPack): Configuration;
@@ -109,6 +110,21 @@ following signature:
 The function must return a configuration object, which will be merged using
 [webpack-merge](https://github.com/survivejs/webpack-merge). There is just
 one parameter: the insntace of `ngpack`.
+
+So, an extension module could be as simple as this:
+
+```js
+module.exports = {
+  provide: function(ngpack) {
+    return {
+      devtool: 'source-map'
+    };
+  }
+};
+```
+
+The above might be pointless, but it's a valid and functional ngpack extension
+that will set the `devtool` option to `source-map`.
 
 If you create a module, please add the `ngpack-ext` keyword to make it easier
 to find.
