@@ -1,6 +1,6 @@
 {
   "name": "@ngpack/istanbul",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "extends ngpack-based configuration to support Istanbul",
   "author": "Merott Movahedi <merott@merott.com> (http://merott.com/)",
   "main": "index.js",

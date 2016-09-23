@@ -1,6 +1,6 @@
 {
   "name": "@ngpack/typescript",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "extends ngpack with TypeScript support",
   "author": "Merott Movahedi <merott@merott.com> (http://merott.com/)",
   "main": "index.js",
