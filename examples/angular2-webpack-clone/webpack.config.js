@@ -5,6 +5,7 @@ var config = module.exports = require('@ngpack/ngpack').ngpack
     root: __dirname,
   })
   .add('@ngpack/base')
+  .add('@ngpack/hmr')
   .add('@ngpack/sass')
   .modify(overwritePostCSS)
   .add('@ngpack/typescript')
@@ -26,7 +27,7 @@ function extendWithAngular2TemplateLoader(ngpack) {
     module:
     {
       loaders: [{
-        loaders: ['angular2-template-loader', '@angularclass/hmr-loader'],
+        loaders: ['angular2-template-loader'],
         test: /\.ts$/,
       }],
     },
