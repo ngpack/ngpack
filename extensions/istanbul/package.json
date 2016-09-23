@@ -19,5 +19,8 @@
     "webpack",
     "istanbul"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "istanbul-instrumenter-loader": "^0.2.0"
+  }
 }

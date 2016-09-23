@@ -4,7 +4,10 @@ import { NgPack } from '@ngpack/ngpack';
 export function provide(ngpack: NgPack): Configuration {
   const config: Configuration = { };
 
-  if (!ngpack.util.isTest()) {
+  let isTest = ngpack.util.isTest();
+  var isTestWatch = ngpack.util.isTestWatch();
+
+  if (!isTest || isTestWatch) {
     return config;
   }
 

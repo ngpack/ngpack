@@ -29,13 +29,7 @@ export function provide(ngpack: NgPack): Configuration {
         ],
         loaders: ['awesome-typescript-loader?' + atlOptions],
         test: /\.ts$/,
-      }],
-      postLoaders: isTest && !isTestWatch ? [{
-        exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/],
-        include: ngpack.util.root('src'),
-        loader: 'istanbul-instrumenter-loader',
-        test: /\.ts$/,
-      }] : [],
+      }]
     },
     plugins: isTest ? [] : [
       new forkCheckerPlugin(),

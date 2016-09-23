@@ -20,5 +20,10 @@
     "typescript",
     "tslint"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "codelyzer": "0.0.26",
+    "tslint": "^3.4.0",
+    "tslint-loader": "^2.1.0"
+  }
 }

@@ -4,7 +4,13 @@ import { NgPack } from '@ngpack/ngpack';
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
-const dashboardPlugin = require('webpack-dashboard/plugin');
+let dashboardPlugin: any;
+
+try {
+   dashboardPlugin = require('webpack-dashboard/plugin');
+} catch (e) {
+  dashboardPlugin = void 0;
+}
 
 export function provide(ngpack: NgPack): webpack.Configuration {
   // create the base webpack configuration
@@ -85,7 +91,7 @@ export function provide(ngpack: NgPack): webpack.Configuration {
     },
   };
 
-  if (ngpack.util.isDev()) {
+  if (ngpack.util.isDev() && typeof dashboardPlugin === 'function') {
     config.plugins.push(new dashboardPlugin());
   }
 

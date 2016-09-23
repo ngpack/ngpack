@@ -19,5 +19,9 @@
     "webpack",
     "typescript"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "awesome-typescript-loader": "^2.2.4",
+    "typescript": "^2.0.2"
+  }
 }
