@@ -1,7 +1,7 @@
 {
   "name": "@ngpack/ngpack",
   "version": "0.0.1-alpha.1",
-  "description": "ngpack: the modular build system for Angular",
+  "description": "Opinionated and modular webpack configuration generator for Angular 2 web applications",
   "author": "Merott Movahedi <merott@merott.com> (http://merott.com/)",
   "main": "ngpack.js",
   "repository": {
